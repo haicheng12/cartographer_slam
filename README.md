@@ -16,6 +16,7 @@ ubuntu 18.04
 ros melodic
 科力激光雷达
 亚博智能IMU
+cartographer安装参考：https://github.com/haicheng12/McKnum_car_sim
 ```
 
 **修改的东西**

@@ -183,7 +183,7 @@ rosrun wr_ls_udp pub_local_pose
 
 **测试效果**
 
-![Image text](https://github.com/haicheng12/sensor_sim/blob/master/img/gazebo.png)
+![Image text](https://github.com/haicheng12/cartographer_slam/blob/master/img/location.png)
 
 
 

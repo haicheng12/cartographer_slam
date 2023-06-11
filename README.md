@@ -1,6 +1,5 @@
 # cartographer_slam
 
-# sensor_sim
 ```
 开发人员：杨工
 

@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="output_type" default="screen"/>
+    <arg name="bringup_self_manager" default="true"/>       <!--if you want to use other manager please set it as false-->
+    <arg name="manager_name" default="wr_laser_manager"/> <!--if you want to use other manager please set it as the name what you specify-->
+    <arg name="manager_name2" default="wr_laser_manager2"/>
+    <arg name="manager_name3" default="wr_laser_manager3"/>
+    <arg name="manager_name4" default="wr_laser_manager4"/>
+    <arg name="manager_name5" default="wr_laser_manager5"/>
+    <arg name="manager_name6" default="wr_laser_manager6"/>
+
+    <!--<param name="robot_description" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de.urdf.xacro'" />
+    <param name="robot_description2" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de_2.urdf.xacro'" />
+    <param name="robot_description3" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de_3.urdf.xacro'" />
+    <param name="robot_description4" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de_4.urdf.xacro'" />
+    <param name="robot_description5" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de_5.urdf.xacro'" />
+    <param name="robot_description6" command="$(find xacro)/xacro.py '$(find wr_ls_udp)/urdf/wr_ls1207de_6.urdf.xacro'" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />-->
+
+    <group if="$(arg bringup_self_manager)">
+        <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>
+   	<node pkg="nodelet" type="nodelet" name="$(arg manager_name2)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>	
+   	<node pkg="nodelet" type="nodelet" name="$(arg manager_name3)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>	
+   	<node pkg="nodelet" type="nodelet" name="$(arg manager_name4)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>	
+   	<node pkg="nodelet" type="nodelet" name="$(arg manager_name5)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>	
+   	<node pkg="nodelet" type="nodelet" name="$(arg manager_name6)" args="manager" output="screen"  respawn="false">
+            <param name="num_worker_threads" value="12" />
+        </node>	
+
+    </group>
+    
+    <!--node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0.2 0 0 0 0 laser laser2 50" /--> 
+    <!--绑定第一组-->
+    <!--<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0.35 0 0 3.14 0 pose2 laser 10" /> 
+    <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0.28 0 0 0 3.14 pose2 livox_frame1 10" /> 
+-->
+    <!--绑定第二组-->
+    <!--<node pkg="tf" type="static_transform_publisher" name="link3_broadcaster" args="0 0.0 0 0 3.14 0 pose laser2 10" /> 
+    <node pkg="tf" type="static_transform_publisher" name="link4_broadcaster" args="0 0.0 0 0 0 3.14 pose livox_frame2 10" /> 
+-->
+
+    <!--绑定第3组-->
+    <!--<node pkg="tf" type="static_transform_publisher" name="link5_broadcaster" args="0 0.0 0 0 3.14 0 pose3 laser3 10" /> 
+    <node pkg="tf" type="static_transform_publisher" name="link6_broadcaster" args="0 0.0 0 0 0 3.14 pose3 livox_frame3 10" /> 
+-->
+
+    <!--绑定第4组-->
+   <!-- <node pkg="tf" type="static_transform_publisher" name="link7_broadcaster" args="0 0.0 0 0 3.14 0 pose4 laser4 10" /> 
+    <node pkg="tf" type="static_transform_publisher" name="link8_broadcaster" args="0 0.0 0 0 0 3.14 pose4 livox_frame4 10" /> 
+-->
+    <!--绑定第5组-->
+    <!--<node pkg="tf" type="static_transform_publisher" name="link9_broadcaster" args="0 0.0 0 0 3.14 0 pose5 laser5 10" /> -->
+	<!--<node pkg="tf" type="static_transform_publisher" name="link9_broadcaster" args="0 0.0 0 0 0 0 pose5 laser5 10" /> -->
+   <!-- <node pkg="tf" type="static_transform_publisher" name="link10_broadcaster" args="0 0.0 0 0 0 3.14 pose5 livox_frame5 10" /> -->
+<!--<node pkg="tf" type="static_transform_publisher" name="link10_broadcaster" args="0 0.0 0 0 0 0 pose5 livox_frame5 10" /> 
+    -->
+<!--绑定第6组-->
+    <!--<node pkg="tf" type="static_transform_publisher" name="link11_broadcaster" args="0 0.0 0 0 3.14 0 pose6 laser6 10" /> 
+    <node pkg="tf" type="static_transform_publisher" name="link12_broadcaster" args="0 0.0 0 0 0 3.14 pose6 livox_frame6 10" /> 
+-->
+    
+<node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan" />
+	<param name="frame_id" type="str" value="laser" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.11" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node>
+    
+    <node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet2" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name2)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan2" />
+	<param name="frame_id" type="str" value="laser2" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.10" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node>  
+
+    <node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet3" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name3)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan3" />
+	<param name="frame_id" type="str" value="laser3" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.9" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node> 
+
+    <node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet4" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name4)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan4" />
+	<param name="frame_id" type="str" value="laser4" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.8" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node> 
+
+    <node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet5" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name5)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan5" />
+	<param name="frame_id" type="str" value="laser5" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.6" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node> 
+
+    <node pkg="nodelet" type="nodelet" name="wr_ls1207de_nodelet6" args="load wr_ls_udp/WrLs1207DENodelet $(arg manager_name6)" output="$(arg output_type)"  respawn="false">
+        <!--
+          <param name="min_ang" type="double" value="-2.35619449019" />
+          <param name="max_ang" type="double" value="2.35619449019" />
+          <param name="intensity" type="bool" value="True" />
+          <param name="skip" type="int" value="0" />
+          <param name="frame_id" type="str" value="laser" />
+          <param name="time_offset" type="double" value="-0.001" />
+          <param name="publish_datagram" type="bool" value="False" />
+          <param name="subscribe_datagram" type="bool" value="false" />
+          <param name="device_number" type="int" value="0" />
+          <param name="time_increment" type="double" value="0.000061722" />
+          <param name="range_min" type="double" value="0.05" />
+          <param name="range_max" type="double" value="10.0" />
+        -->
+        <!--<remap from="scan" to="wr_scan" />-->
+
+        <remap from="scan" to="wr_scan6" />
+	<param name="frame_id" type="str" value="laser6" />	
+        <param name="range_min" type="double" value="0.01" />
+        <param name="range_max" type="double" value="30.0" />
+        <param name="hostname" type="string" value="192.168.1.7" />
+        <param name="port" type="string" value="2112" />
+        <param name="timelimit" type="int" value="5" />
+        <param name="checkframe" type="bool" value="true" />
+
+
+    </node> 
+
+    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find wr_ls_udp)/rviz/multi_laser.rviz" required="true" /-->
+  
+</launch>

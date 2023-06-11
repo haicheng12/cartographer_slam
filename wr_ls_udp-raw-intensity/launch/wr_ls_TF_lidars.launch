@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+    
+    
+    <!--node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0.2 0 0 0 0 laser laser2 50" /--> 
+    <!--绑定第一组-->
+  
+    <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0.08 0 0 0.046 0 pose livox_frame2 10" /> 
+
+    <!--绑定第二组-->
+   
+    <node pkg="tf" type="static_transform_publisher" name="link4_broadcaster" args="0 -0.28 0 0 -0.02 -0.03 pose2 livox_frame1 10" /> 
+
+
+    <!--绑定第3组-->
+  
+    <node pkg="tf" type="static_transform_publisher" name="link6_broadcaster" args="0 -0.32 0 0 0 0 pose3 livox_frame3 10" /> 
+
+    <!--绑定第4组-->
+    <node pkg="tf" type="static_transform_publisher" name="link8_broadcaster" args="0 -0.55 0 0 0.01 0 pose4 livox_frame4 10" /> 
+
+    <!--绑定第5组-->
+
+  <node pkg="tf" type="static_transform_publisher" name="link10_broadcaster" args="0 -0.70 0 0 0.02 0 pose5 livox_frame5 10" /> 
+
+    <!--绑定第6组-->
+
+    <node pkg="tf" type="static_transform_publisher" name="link12_broadcaster" args="0 -1 0 0 0.021 0 pose6 livox_frame6 10" /> 
+
+    </launch>

@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_mount_link" args="0.0 0.0 0.0 0.0 0.0 0.0 /laser_mount_link /imu_link 50"/> 
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_mount_link" args="0.0 0.0 0.0 0.0 0.0 0.0 /base_link /laser_mount_link 50"/> 
+
+  <node pkg="tf" type="static_transform_publisher" name="laser_mount_lin_to_laser_imu_link" args="0.0 0.0 0.0 0.0 0.0 0.0 /laser_mount_link /imu_link 50"/> 
 
 </launch>
